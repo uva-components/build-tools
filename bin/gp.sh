@@ -16,15 +16,15 @@
 # Run in a clean directory passing in a GitHub org and repo name
 org=$1
 repo=$2
-branch=${3:-"master"} # default to master when branch isn't specified
+branch="master" # default to master when branch isn't specified
 
 # make folder (same as input, no checking!)
 mkdir $repo
-git clone git@github.com:$org/$repo.git --single-branch &> /dev/null;
+git clone git@github.com:$org/$repo.git --single-branch
 
 # switch to gh-pages branch
 pushd $repo >/dev/null
-git checkout --orphan gh-pages &> /dev/null;
+git checkout --orphan gh-pages 
 
 # remove all content
 git rm -rf -q .
@@ -37,8 +37,8 @@ echo "{
 }
 " > .bowerrc
 bower -q install &> /dev/null;
-bower -q install $org/$repo &> /dev/null; #$branch
-git checkout ${branch} -- demo &> /dev/null;
+bower -q install $org/$repo #$branch
+git checkout ${branch} -- demo 
 rm -rf components/$repo/demo
 mv demo components/$repo/
 cp -r components/* .
@@ -49,7 +49,7 @@ echo "<META http-equiv="refresh" content=\"0;URL=components/$repo/\">" >index.ht
 
 # send it all to github
 git add -A . &> /dev/null;
-git commit -am 'seed gh-pages' &> /dev/null;
-git push -u origin gh-pages --force &> /dev/null;
+git commit -am 'seed gh-pages' 
+git push -u origin gh-pages --force 
 
 popd >/dev/null
