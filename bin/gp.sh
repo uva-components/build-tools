@@ -16,7 +16,7 @@
 # Run in a clean directory passing in a GitHub org and repo name
 org=$1
 repo=$2
-branch="master" # default to master when branch isn't specified
+branch=${3:-"master"} # default to master when branch isn't specified
 
 # make folder (same as input, no checking!)
 mkdir $repo
@@ -37,12 +37,10 @@ echo "{
 }
 " > .bowerrc
 bower install
-bower install uva-components/uva-models#master
-#bower install $org/$repo#$branch
+bower install $org/$repo#$branch
 git checkout ${branch} -- demo
 rm -rf components/$repo/demo
-#mv demo/* components/$repo/
-cp -r components/* .
+mv demo components/$repo/
 
 # redirect by default to the component folder
 echo "<META http-equiv="refresh" content=\"0;URL=components/$repo/\">" >index.html
