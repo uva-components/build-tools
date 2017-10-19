@@ -41,7 +41,7 @@ bower install $org/$repo#$branch
 git checkout ${branch} -- demo
 rm -rf components/$repo/demo
 mv demo components/$repo/
-cp -r components/* .
+cp -r components/webcomponentsjs webcomponentsjs
 
 # redirect by default to the component folder
 echo "<META http-equiv="refresh" content=\"0;URL=components/$repo/\">" >index.html
