@@ -36,8 +36,8 @@ echo "{
   \"directory\": \"components\"
 }
 " > .bowerrc
-bower install
-bower install $org/$repo#$branch
+bower -q install
+bower -q install $org/$repo#$branch
 git checkout ${branch} -- demo
 rm -rf components/$repo/demo
 mv demo components/$repo/
