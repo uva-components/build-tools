@@ -37,10 +37,12 @@ echo "{
 }
 " > .bowerrc
 bower install
-bower install $org/$repo#$branch
+bower install uva-components/uva-models#master
+#bower install $org/$repo#$branch
 git checkout ${branch} -- demo
 rm -rf components/$repo/demo
-mv demo components/$repo/
+#mv demo/* components/$repo/
+cp -r components/* .
 
 # redirect by default to the component folder
 echo "<META http-equiv="refresh" content=\"0;URL=components/$repo/\">" >index.html
