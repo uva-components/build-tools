@@ -38,9 +38,9 @@ echo "{
 " > .bowerrc
 bower -q install &> /dev/null;
 bower -q install $org/$repo #$branch
-git checkout ${branch} -- demo 
-rm -rf components/$repo/demo
-mv demo components/$repo/
+#git checkout ${branch} -- demo 
+#rm -rf components/$repo/demo
+#mv demo components/$repo/
 cp -r components/* .
 cp *.html components/
 
