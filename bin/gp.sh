@@ -42,6 +42,7 @@ git checkout ${branch} -- demo
 rm -rf components/$repo/demo
 mv demo components/$repo/
 cp -r components/* .
+cp *.html components/
 
 # redirect by default to the component folder
 echo "<META http-equiv="refresh" content=\"0;URL=components/$repo/\">" >index.html
