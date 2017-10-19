@@ -24,7 +24,7 @@ git clone git@github.com:$org/$repo.git --single-branch
 
 # switch to gh-pages branch
 pushd $repo >/dev/null
-git checkout --orphan gh-pages 
+git checkout --orphan gh-pages
 
 # remove all content
 git rm -rf -q .
@@ -36,20 +36,18 @@ echo "{
   \"directory\": \"components\"
 }
 " > .bowerrc
-bower -q install &> /dev/null;
-bower -q install $org/$repo #$branch
-#git checkout ${branch} -- demo 
-#rm -rf components/$repo/demo
-cp components/$repo/*.html components/
-mv demo/* components/$repo/
-cp -r components/* .
+bower install
+bower install $org/$repo#$branch
+git checkout ${branch} -- demo
+rm -rf components/$repo/demo
+mv demo components/$repo/
 
 # redirect by default to the component folder
 echo "<META http-equiv="refresh" content=\"0;URL=components/$repo/\">" >index.html
 
 # send it all to github
-git add -A . &> /dev/null;
-git commit -am 'seed gh-pages' 
-git push -u origin gh-pages --force 
+git add -A .
+git commit -am 'seed gh-pages'
+git push -u origin gh-pages --force
 
 popd >/dev/null
