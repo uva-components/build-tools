@@ -45,7 +45,7 @@ mv demo components/$repo/
 # redirect by default to the component folder
 echo "<META http-equiv="refresh" content=\"0;URL=components/$repo/\">" >index.html
 
-sed -i 's/\<head\>/\<head\>\<script src=\"http\:\/\/static\.lib\.virginia\.edu\/js\/controllers\/webcomponents\.js\"\>\<\/src\>/g' components/$repo/index.html
+sed -i 's/\<head\>/\<head\>\<script src=\"http\:\/\/static\.lib\.virginia\.edu\/js\/controllers\/webcomponents\.js\"\>\<\/script\>/g' components/$repo/index.html
 
 # send it all to github
 git add -A .
